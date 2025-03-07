@@ -122,7 +122,8 @@ multiplicar(2, 2)
 // importar uma função de outro arquivo
 
 // No padrão do node sem projeto não funciona
-// o import por modulos
+// o import por modulos, tem que utilizar o module.exports
+// Mas esse formato é o que vamos utilizar nos projetos
 import { calcularIMC } from "./CalculadoraIMC"
 
 // Modo de import padrão no node
