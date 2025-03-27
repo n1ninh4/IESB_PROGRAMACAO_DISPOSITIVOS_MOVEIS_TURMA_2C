@@ -9,6 +9,9 @@ export default function ListaComponente() {
 
   return (
     <View style={styles.container}>
+      
+      {/* Resolve o warning de lista sem chave, usando a posição do array como key */}
+      {listaCarros.map((carro, index) => <Text key={index} >{carro}</Text>)}
 
       {listaCarros.map(carro => <Text>{carro}</Text>)}
 
