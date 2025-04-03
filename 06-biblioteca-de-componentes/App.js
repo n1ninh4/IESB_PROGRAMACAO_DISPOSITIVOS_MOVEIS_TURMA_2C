@@ -1,67 +1,66 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Card, Divider, PaperProvider, Paragraph, Text, Title } from 'react-native-paper';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Card, PaperProvider, Paragraph, Title } from 'react-native-paper';
 
 export default function App() {
 
+  const listaCards = [
+    {
+      titulo: "Card 1",
+      descricao: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      imagem: 'https://picsum.photos/700'
+    },
+    {
+      titulo: "Card 2",
+      descricao: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      imagem: 'https://picsum.photos/700'
+    },
+    {
+      titulo: "Card 3",
+      descricao: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      imagem: 'https://picsum.photos/700'
+    },
+    {
+      titulo: "Card 4",
+      descricao: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      imagem: 'https://picsum.photos/700'
+    }
+  ]
+
   return (
     <PaperProvider>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
 
-      <ScrollView>
-        <View style={styles.container}>
-          <StatusBar style="auto" />
+        <FlatList
+          horizontal
+          data={listaCards}
+          renderItem={({ item }) => (
+            <Card style={{ marginBottom: 10, height: 500 }}>
+              <Card.Content>
+                <Title>{item.titulo}</Title>
+                <Paragraph>{item.descricao}</Paragraph>
+              </Card.Content>
+              <Card.Cover source={{ uri: item.imagem }} />
+            </Card>
+          )}
+        />
 
-          <Button mode='contained' onPress={() => alert('Clicou')} >Clicar AQUI!</Button>
-          <Button mode='contained-tonal' >Clicar</Button>
-          <Button mode='elevated' >Clicar</Button>
-          <Button mode='outlined' >Clicar</Button>
-          <Button mode='text' >Clicar</Button>
+        <FlatList
+          data={listaCards}
+          renderItem={({ item }) => (
+            <Card style={{ marginBottom: 10 }}>
+              <Card.Content>
+                <Title>{item.titulo}</Title>
+                <Paragraph>{item.descricao}</Paragraph>
+              </Card.Content>
+              <Card.Cover source={{ uri: item.imagem }} />
+            </Card>
+          )}
+        />
 
-          <Text variant='bodyLarge'>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-          <Text variant='displayLarge'>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-          <Text variant='headlineLarge'>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-          <Text variant='labelLarge'>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-          <Text variant='titleLarge'>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-          <Text>Um texto qualquer</Text>
-          <Divider style={{ width: '90%' }} />
-
-
-          <Card style={{ margin: 10 }}>
-            <Card.Title title="teste">
-              <Text>Teste</Text>
-            </Card.Title>
-            <Card.Content>
-              <Title>Um titulo qualquer</Title>
-              <Paragraph>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</Paragraph>
-            </Card.Content>
-            <Card.Actions>
-              <Text>teste</Text>
-            </Card.Actions>
-          </Card>
-
-
-          <Card style={{ margin: 10 }}>
-            <Card.Title title="teste">
-              <Text>Teste</Text>
-            </Card.Title>
-            <Card.Content>
-              <Title>Um titulo qualquer</Title>
-              <Paragraph>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</Paragraph>
-            </Card.Content>
-            <Card.Actions>
-              <Text>teste</Text>
-            </Card.Actions>
-          </Card>
-
-        </View>
-      </ScrollView>
-
+      </View>
     </PaperProvider>
   );
 }
@@ -71,6 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
