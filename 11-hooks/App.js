@@ -3,6 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Nome from './src/components/Nome';
+import Volume from './src/components/Volume';
+import NumeroAleatorio from './src/components/NumeroAleatorio';
 
 export default function App() {
   return (
@@ -10,9 +12,8 @@ export default function App() {
       <StatusBar style="auto" />
 
       <Nome />
-
-
-
+      <Volume />
+      <NumeroAleatorio />
 
     </View>
   );
