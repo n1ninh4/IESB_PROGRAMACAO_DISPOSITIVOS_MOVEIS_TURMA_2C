@@ -15,7 +15,7 @@ export default function AlunoForm({ navigation, route }) {
   const [dataNascimento, setDataNascimento] = useState(alunoAntigo.dataNascimento || '')
 
 
-  function salvar() {
+  async function salvar() {
     const aluno = {
       nome,
       cpf,
@@ -30,15 +30,23 @@ export default function AlunoForm({ navigation, route }) {
     }
 
 
-    if(alunoAntigo.id){
+    if (alunoAntigo.id) {
       // Atualizar um aluno
       aluno.id = alunoAntigo.id
-      AlunoService.atualizar(aluno)
+      await AlunoService.atualizar(aluno)
       alert('Aluno atualizado com sucesso!')
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "AlunoLista" }]
+      })
     } else {
       // criando um aluno novo
-      AlunoService.salvar(aluno)
+      await AlunoService.salvar(aluno)
       alert('Aluno criado com sucesso!')
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "AlunoLista" }]
+      })
     }
 
 
